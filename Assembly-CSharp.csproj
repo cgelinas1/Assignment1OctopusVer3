@@ -52,6 +52,7 @@
      <Compile Include="Assets\_Scripts\MovesTowardPlayer.cs" />
      <Compile Include="Assets\_Scripts\OceanController.cs" />
      <Compile Include="Assets\_Scripts\PlayerBehaviour.cs" />
+     <Compile Include="Assets\_Scripts\StarBehaviour.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

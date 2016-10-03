@@ -6,7 +6,11 @@ public class PlayerBehaviour : MonoBehaviour {
     public float playerSpeed = 4.0f;
    
     private float currentSpeed = 0.0f;
-    
+    public AudioClip shootSound;
+
+    // Reference to our AudioSource component
+    private AudioSource audioSource;
+
     private Vector3 lastMovement = new Vector3();
     
     public Transform ink;
@@ -20,10 +24,8 @@ public class PlayerBehaviour : MonoBehaviour {
     public List<KeyCode> shootButton;
 
     // What sound to play when we're shooting
-    public AudioClip shootSound;
+    public AudioClip DeadFish;
 
-    // Reference to our AudioSource component
-    private AudioSource audioSource;
 
     public Camera mainCamera;
 
@@ -128,11 +130,13 @@ public class PlayerBehaviour : MonoBehaviour {
         // angle away from the center
         float rotationAngle = transform.localEulerAngles.z - 90;
         // Calculate the position right in front of octpus
-        
+        audioSource.PlayOneShot(DeadFish, 1.0f);
+
         inkPos.x += (Mathf.Cos((rotationAngle) *
             Mathf.Deg2Rad) * -inkDistance);
         inkPos.y += (Mathf.Sin((rotationAngle) *
             Mathf.Deg2Rad) * -inkDistance);
         Instantiate(ink, inkPos, this.transform.rotation);
+
     }
 }
