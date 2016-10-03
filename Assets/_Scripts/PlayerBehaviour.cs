@@ -56,7 +56,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     }
 
-    // Will rotate the ship to face the mouse.
+    
     void Rotation()
     {
         // We need to tell where the mouse is relative to the

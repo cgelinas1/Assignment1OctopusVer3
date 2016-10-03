@@ -5,9 +5,6 @@ public class EnemyBehaviour : MonoBehaviour {
 
     public int health = 2;
 
-    // When the enemy dies, we play an explosion
-    public Transform explosion;
-
     // sound to play when hit
     //public AudioClip hitSound;
 
@@ -16,50 +13,37 @@ public class EnemyBehaviour : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        
         controller =
             GameObject
                 .FindGameObjectWithTag("GameController")
                 .GetComponent<GameController>();
     }
 
-    void OnCollisionEnter2D(Collision2D theCollision)
+    void OnTriggerEnter2D(Collider2D other)
     {
         // Uncomment this line to check for collision
-        //Debug.Log("Hit"+ theCollision.gameObject.name);
-        // this line looks for "laser" in the names of
-        // anything collided.
-        if (theCollision.gameObject.name.Contains("Ink"))
+        Debug.Log("Hit"+ other.gameObject.name);
+        
+        if (other.gameObject.name.Contains("Ink"))
         {
-            InkBehaviour Ink =
-                theCollision.gameObject.GetComponent
-                ("LaserBehaviour") as InkBehaviour;
-            health -= Ink.damage;
-            Destroy(theCollision.gameObject);
+            InkBehaviour ink =
+            other.gameObject.GetComponent
+            ("InkBehaviour") as InkBehaviour;
+            health -= ink.damage;
+            Destroy(this.gameObject);
 
            
         }
-
-        if (theCollision.gameObject.name.Contains("Octo1"))
-        {
-            controller.DecreaseLives(1);
-        }
-
         if (health <= 0)
         {
-            // Check if explosion was set
-            if (explosion)
-            {
-                GameObject exploder = ((Transform)Instantiate(explosion, this.
-                    transform.position, this.transform.rotation)).gameObject;
-                Destroy(exploder, 2.0f);
-            }
-
-            controller.KilledEnemy();
-            controller.IncreaseScore(10);
-
-
             Destroy(this.gameObject);
         }
+
+        if (other.gameObject.name.Contains("Octo1"))
+        {
+            Destroy(this.gameObject);
+        }
+
+
     }
 }
