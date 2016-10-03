@@ -45,10 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Scripts\EnemyBehaviour.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\InkBehaviour.cs" />
      <Compile Include="Assets\_Scripts\MovesAwayFromPlayer.cs" />
      <Compile Include="Assets\_Scripts\MovesTowardPlayer.cs" />
+     <Compile Include="Assets\_Scripts\OceanController.cs" />
      <Compile Include="Assets\_Scripts\PlayerBehaviour.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
